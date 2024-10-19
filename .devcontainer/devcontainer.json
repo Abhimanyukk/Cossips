@@ -1,0 +1,15 @@
+{
+    "name": "Cossips",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "rvest.vs-code-prettier-eslint"
+            ]
+        }
+    },
+    "forwardPorts": [
+        3000
+    ]
+}
