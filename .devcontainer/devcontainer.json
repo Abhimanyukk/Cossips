@@ -5,7 +5,8 @@
         "vscode": {
             "extensions": [
                 "dbaeumer.vscode-eslint",
-                "rvest.vs-code-prettier-eslint"
+                "rvest.vs-code-prettier-eslint",
+                "jabedhossain.web-preview",
             ]
         }
     },
