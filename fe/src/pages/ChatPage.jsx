@@ -11,22 +11,26 @@ const socket = io('http://localhost:1234')
 function ChatRoom({ user }) {
     const [chat, setChat] = useState([])
     const chatEndRef = useRef(null)
+    const messageRef = useRef(null)
 
-    const handleSendClick = () => {
-        console.log("Clicked");
-    };
-
-    const handleEnterClicked = (msg) => {
+    const sendMessage = (msg) => {
         const messageBody = {
             user: user,
             msg: msg,
         }
         socket.emit('sendMessage', messageBody);
+    }
+
+    const handleSendClick = () => {
+        sendMessage(messageRef.current.getValue())
+    };
+
+    const handleEnterClicked = (msg) => {
+        sendMessage(msg)
     };
 
     useEffect(() => {
         socket.on('receiveMessage', (data) => {
-            console.log(`msg: ${data.user} ${data.msg}`)
             setChat((prevChat) => [...prevChat, data])
         })
 
@@ -78,7 +82,7 @@ function ChatRoom({ user }) {
                 padding: '0px',
                 gap: '10px'
             }}>
-                <ChatInput onValueChange={handleEnterClicked}></ChatInput>
+                <ChatInput onValueChange={handleEnterClicked} ref={messageRef}></ChatInput>
                 <SendButton onClick={handleSendClick}></SendButton>
             </div>
         </div>

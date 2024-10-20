@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import { COLORS } from '../constants';
 
-const ChatInput = ({ onValueChange }) => {
+const ChatInput = forwardRef(({ onValueChange }, ref) => {
     const [value, setValue] = useState('');
 
     const handleValue = (event) => {
@@ -24,6 +24,10 @@ const ChatInput = ({ onValueChange }) => {
         };
     });
 
+    useImperativeHandle(ref, () => ({
+        getValue: () => value, // Return the current value
+    }));
+
     return (
         <div style={{
             boxSizing: 'border-box',
@@ -41,6 +45,7 @@ const ChatInput = ({ onValueChange }) => {
                 placeholder='Enter message here'
                 onChange={handleValue}
                 value={value}
+                ref={ref}
                 style={{
                     outline: 'none',
                     border: 'none',
@@ -57,6 +62,9 @@ const ChatInput = ({ onValueChange }) => {
 
         </div>
     )
-}
+})
+// const ChatInput = ({ onValueChange }) => {
+
+// }
 
 export default ChatInput;
