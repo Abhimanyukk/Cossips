@@ -26,6 +26,7 @@ const ChatInput = forwardRef(({ onValueChange }, ref) => {
 
     useImperativeHandle(ref, () => ({
         getValue: () => value, // Return the current value
+        clear: () => setValue(''),
     }));
 
     return (

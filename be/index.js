@@ -10,7 +10,6 @@ app.use(express.static(path.join(__dirname, 'build')))
 
 const io = socketIo(server, {
     cors: {
-        origin: 'http://localhost:3000',
         methods: ["GET", "POST"]
     }
 });
@@ -30,7 +29,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
-const port = 1234;
+const port = 80;
 
 server.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

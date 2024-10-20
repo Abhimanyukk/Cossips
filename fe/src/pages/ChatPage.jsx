@@ -5,7 +5,7 @@ import ChatInput from '../components/ChatInput';
 import io from 'socket.io-client'
 import MessageBox from '../components/MessageBox';
 
-const socket = io('http://localhost:1234')
+const socket = io()
 
 function ChatRoom({ user }) {
     const [chat, setChat] = useState([])
@@ -21,7 +21,11 @@ function ChatRoom({ user }) {
     }
 
     const handleSendClick = () => {
-        sendMessage(messageRef.current.getValue())
+        const msg = messageRef.current.getValue()
+        if (msg !== '') {
+            sendMessage(msg)
+            messageRef.current.clear()
+        }
     };
 
     const handleEnterClicked = (msg) => {
