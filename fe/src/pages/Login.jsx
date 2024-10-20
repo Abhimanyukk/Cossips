@@ -28,7 +28,7 @@ const Login = ({ onLogin }) => {
             gap: '10px',
             alignSelf: 'stretch',
             margin: '0px',
-            flex: 1
+            flex: '1'
         }}>
             <div style={{
                 display: 'flex',

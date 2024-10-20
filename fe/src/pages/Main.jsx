@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header';
 import Login from './Login';
+import ChatRoom from './ChatPage';
 
 function Main() {
+    const [user, setUser] = useState(null);
+
     const LoginHandler = (user) => {
         console.log('User: ', user);
+        setUser(user);
     };
 
     return (
@@ -18,7 +22,12 @@ function Main() {
             height: '98vh'
         }}>
             <Header></Header>
-            <Login onLogin={LoginHandler}></Login>
+            {
+                user
+                    ? (<ChatRoom user={user} />)
+                    : (<Login onLogin={LoginHandler} />)
+            }
+            {/* <ChatRoom user="abi" /> */}
         </div>
     )
 }
