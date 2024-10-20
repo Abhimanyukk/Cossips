@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { COLORS } from '../constants';
 import SendButton from '../components/SendButton';
 import ChatInput from '../components/ChatInput';
-import axios from 'axios'
 import io from 'socket.io-client'
 import MessageBox from '../components/MessageBox';
 

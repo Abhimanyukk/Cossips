@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { COLORS } from '../constants';
 import InputArea from '../components/InputArea';
 
@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => {
         return () => {
             window.removeEventListener('keypress', handleKeyPress);
         };
-    }, []);
+    });
 
     return (
         <div style={{
